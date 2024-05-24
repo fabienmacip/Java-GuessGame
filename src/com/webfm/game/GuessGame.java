@@ -1,13 +1,16 @@
 package com.webfm.game;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class GuessGame {
 
     private final List<Character> secretWord = new ArrayList<>();
     private int lifePoints;
     private final List<Character> guessWord = new ArrayList<>();
+    private final Set<Character> guessedLetters = new HashSet();
 
     public GuessGame(String wordToGuess, int lifePoints) {
         for (char c : wordToGuess.toCharArray()) {
@@ -23,11 +26,13 @@ public class GuessGame {
     public String toString() {
         return "Jeu du pendu {" +
                 "Points de vie restants : " + lifePoints +
-                ", votre mot :" + guessWord +
+                ", votre mot : " + guessWord +
+                ", lettres déjà proposées : " + guessedLetters +
                 '}';
     }
 
     public void guessLetter(char letter) {
+        guessedLetters.add(letter);
         if(secretWord.contains(letter) && !guessWord.contains(letter)) {
             var index = 0;
             for(char c : secretWord) {
