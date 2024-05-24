@@ -3,6 +3,9 @@ import com.webfm.game.GuessGame;
 import java.util.Random;
 import java.util.Scanner;
 
+/**
+ * Class of the entrypoint of the Guess Game
+ */
 public class Main {
 
     private static char scanLetter(String question) {
